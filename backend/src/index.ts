@@ -6,7 +6,11 @@ dotenv.config();
 const PORT: number = parseInt(process.env.PORT || '8080');
 const server = http.createServer();
 
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+  },
+});
 
 io.on('connection', (socket: Socket) => {
   console.log('A user connected');
